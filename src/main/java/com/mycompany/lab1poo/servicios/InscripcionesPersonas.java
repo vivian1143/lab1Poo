@@ -2,5 +2,5 @@
 package com.mycompany.lab1poo.servicios;
 
 public class InscripcionesPersonas {
-
+    private Persona listado{};
 }
