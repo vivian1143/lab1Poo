@@ -2,9 +2,9 @@
 package com.mycompany.lab1poo.servicios;
 
 
-import modelo.Estudiante;
-import modelo.Persona;
-import modelo.Profesor;
+import com.mycompany.lab1poo.modelos.Estudiante;
+import com.mycompany.lab1poo.modelos.Profesor;
+import com.mycompany.lab1poo.modelos.Persona;
 
 import java.io.*;
 import java.util.ArrayList;
