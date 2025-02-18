@@ -15,7 +15,7 @@ abstract class Persona {
 
     @Override
     public String toString(){
-        return id + "," + nombre + apellido + ", email: " + email;
+        return id + ", " + nombre + apellido + ", email: " + email;
     }
 
 
