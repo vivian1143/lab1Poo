@@ -1,4 +1,4 @@
-package com.mycompany.lab1poo.class;
+package com.mycompany.lab1poo.modelos;
 
 public class Inscripcion {
 
