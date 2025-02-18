@@ -1,18 +1,28 @@
 package com.mycompany.lab1poo.servicios;
 
-import modelo.Curso;
-import modelo.Estudiante;
-import modelo.Profesor;
+package servicios;
 
-public interface IServicios {
+import java.util.List;
 
-    void inscribirCursoProfesor(Profesor profesor, Curso curso);
-    void inscribirEstudianteEnCurso(Estudiante estudiante, Curso curso, String semestre);
+public interface Servicios {
 
-    boolean eliminarInscripcion(int idInscripcion);
-    boolean actualizarInscripcion(int idInscripcion, String nuevoSemestre);
+    /**
+     * Devuelve una representación en String del elemento que se encuentra en la posición indicada.
+     * @param posicion la posición (índice) del elemento en el listado.
+     * @return Cadena con la información del elemento en esa posición.
+     */
+    String imprimirPosicion(int posicion);
 
-    // Métodos de persistencia
-    void guardarDatos();
-    void cargarDatos();
+    /**
+     * Retorna la cantidad actual de elementos presentes en el listado.
+     * @return Un entero que representa la cantidad actual de elementos.
+     */
+    int cantidadActual();
+
+    /**
+     * Devuelve un listado de cadenas, donde cada cadena es la representación de un elemento del listado.
+     * @return Una lista de String con la información de cada elemento.
+     */
+    List<String> imprimirListado();
 }
+
