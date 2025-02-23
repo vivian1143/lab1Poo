@@ -1,149 +1,81 @@
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:3873768570.
 package com.mycompany.lab1poo.servicios;
 
-
-import com.mycompany.lab1poo.modelos.Estudiante;
-import com.mycompany.lab1poo.modelos.Profesor;
 import com.mycompany.lab1poo.modelos.Persona;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InscripcionesPersonas {
+public class InscripcionesPersonas implements Servicios {
+    private List<Persona> listado = new ArrayList<>();
 
-    
-    private List<Persona> listado;
-    
-    private static final String ARCHIVO_INSCRIPCIONES_PERSONAS = "inscripciones_personas.txt";
-
-    
-    public InscripcionesPersonas() {
-        listado = new ArrayList<>();
-        cargarDatos();
+    public void inscribir(Persona persona) {
+        listado.add(persona);
+        guardarInformacion(persona);
     }
 
-    
-    public void inscribir(Persona p) {
-        listado.add(p);
-        guardarInformacion(p);
+    public void eliminar(Persona persona) {
+        listado.remove(persona);
+        guardarInformacion(null);
     }
 
-    
-    public boolean eliminar(Persona p) {
-        boolean removed = listado.removeIf(persona -> persona.getId() == p.getId());
-        if (removed) {
-            // Reescribe el archivo con la lista actualizada
-            guardarTodoListado();
-        }
-        return removed;
-    }
-
-    
-    public boolean actualizar(Persona p) {
+    public void actualizar(Persona persona) {
         for (int i = 0; i < listado.size(); i++) {
-            if (listado.get(i).getId() == p.getId()) {
-                listado.set(i, p);
-                guardarTodoListado();
-                return true;
+            if (listado.get(i).getIdPersona() == persona.getIdPersona()) {
+                listado.set(i, persona);
+                break;
             }
         }
-        return false;
+        guardarInformacion(null);
     }
 
-    
-    public void guardarInformacion(Persona p) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(ARCHIVO_INSCRIPCIONES_PERSONAS, true))) {
-            String linea;
-            if (p instanceof Estudiante) {
-                Estudiante e = (Estudiante) p;
-                linea = "E;" + e.getId() + ";" + e.getNombre() + ";" + e.getDocumento() + ";" + e.getCodigoEstudiante();
-            } else if (p instanceof Profesor) {
-                Profesor pr = (Profesor) p;
-                linea = "P;" + pr.getId() + ";" + pr.getNombre() + ";" + pr.getDocumento() + ";" + pr.getCodigoProfesor();
+    public void guardarInformacion(Persona persona) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("personas.txt", true))) {
+            if (persona != null) {
+                writer.write(persona.toString());
+                writer.newLine();
             } else {
-                // Si se llegara a tener otro tipo, se puede manejar de otra forma.
-                linea = "U;" + p.getId() + ";" + p.getNombre() + ";" + p.getDocumento();
-            }
-            bw.write(linea);
-            bw.newLine();
-        } catch (IOException e) {
-            System.out.println("Error al guardar la información de la persona: " + e.getMessage());
-        }
-    }
-
-    
-    private void guardarTodoListado() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(ARCHIVO_INSCRIPCIONES_PERSONAS))) {
-            for (Persona p : listado) {
-                String linea;
-                if (p instanceof Estudiante) {
-                    Estudiante e = (Estudiante) p;
-                    linea = "E;" + e.getId() + ";" + e.getNombre() + ";" + e.getDocumento() + ";" + e.getCodigoEstudiante();
-                } else if (p instanceof Profesor) {
-                    Profesor pr = (Profesor) p;
-                    linea = "P;" + pr.getId() + ";" + pr.getNombre() + ";" + pr.getDocumento() + ";" + pr.getCodigoProfesor();
-                } else {
-                    linea = "U;" + p.getId() + ";" + p.getNombre() + ";" + p.getDocumento();
+                // Reescribir archivo
+                try (BufferedWriter overwriteWriter = new BufferedWriter(new FileWriter("personas.txt"))) {
+                    for (Persona per : listado) {
+                        overwriteWriter.write(per.toString());
+                        overwriteWriter.newLine();
+                    }
                 }
-                bw.write(linea);
-                bw.newLine();
             }
         } catch (IOException e) {
-            System.out.println("Error al guardar el listado de personas: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
-    /**
-     * Carga los datos desde el archivo de texto y reconstruye el listado en memoria.
-     * Se asume el formato:
-     * Tipo;id;nombre;documento;campoExtra
-     * Donde Tipo es 'E' para Estudiante y 'P' para Profesor.
-     */
     public void cargarDatos() {
         listado.clear();
-        File file = new File(ARCHIVO_INSCRIPCIONES_PERSONAS);
-        if (!file.exists()) {
-            // Si el archivo no existe, no hay nada que cargar
-            return;
-        }
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                String[] partes = linea.split(";");
-                if (partes.length >= 4) {
-                    String tipo = partes[0];
-                    int id = Integer.parseInt(partes[1]);
-                    String nombre = partes[2];
-                    String documento = partes[3];
-                    if ("E".equalsIgnoreCase(tipo) && partes.length == 5) {
-                        String codigoEstudiante = partes[4];
-                        listado.add(new Estudiante(id, nombre, documento, codigoEstudiante));
-                    } else if ("P".equalsIgnoreCase(tipo) && partes.length == 5) {
-                        String codigoProfesor = partes[4];
-                        listado.add(new Profesor(id, nombre, documento, codigoProfesor));
-                    }
-                    // Puedes agregar más casos si existen otros tipos.
-                }
+        try (BufferedReader reader = new BufferedReader(new FileReader("personas.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Parsear y reconstruir el objeto Persona desde la línea
+                System.out.println("Carga de datos: " + line);
             }
         } catch (IOException e) {
-            System.out.println("Error al cargar datos de personas: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
-    
     @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (Persona p : listado) {
-            sb.append(p.toString()).append("\n");
-        }
-        return sb.toString();
+    public String imprimirPosicion(int posicion) {
+        return listado.get(posicion).toString();
     }
 
-    // (Opcional) Getter para acceder al listado desde otras clases
-    public List<Persona> getListado() {
-        return listado;
+    @Override
+    public int cantidadActual() {
+        return listado.size();
+    }
+
+    @Override
+    public List<String> imprimirListado() {
+        List<String> listadoStrings = new ArrayList<>();
+        for (Persona persona : listado) {
+            listadoStrings.add(persona.toString());
+        }
+        return listadoStrings;
     }
 }
-
