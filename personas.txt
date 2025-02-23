@@ -2,3 +2,11 @@ Estudiante: 1.0, JuanPérez, email: juan.perez@email.com, ES001, 1.0, Ingenierí
 Estudiante: 2.0, MaríaGómez, email: maria.gomez@email.com, ES002, 2.0, Administración, 4.0, ADM-002, null, true, 4.8
 Profesor: 1.0, CarlosRodríguez, email: carlos.rodriguez@email.com , Tiempo Completo
 Profesor: 2.0, AnaMartínez, email: ana.martinez@email.com , Medio Tiempo
+Estudiante: 1.0, JuanPérez, email: juan.perez@email.com, ES001, 1.0, Ingeniería de Sistemas, 5.0, IS-001, null, true, 4.5
+Estudiante: 2.0, MaríaGómez, email: maria.gomez@email.com, ES002, 2.0, Administración, 4.0, ADM-002, null, true, 4.8
+Profesor: 1.0, CarlosRodríguez, email: carlos.rodriguez@email.com , Tiempo Completo
+Profesor: 2.0, AnaMartínez, email: ana.martinez@email.com , Medio Tiempo
+Estudiante: 1.0, JuanPérez, email: juan.perez@email.com, ES001, 1.0, Ingeniería de Sistemas, 5.0, IS-001, null, true, 4.5
+Estudiante: 2.0, MaríaGómez, email: maria.gomez@email.com, ES002, 2.0, Administración, 4.0, ADM-002, null, true, 4.8
+Profesor: 1.0, CarlosRodríguez, email: carlos.rodriguez@email.com , Tiempo Completo
+Profesor: 2.0, AnaMartínez, email: ana.martinez@email.com , Medio Tiempo

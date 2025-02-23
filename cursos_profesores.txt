@@ -1,2 +1,6 @@
 el id del curso: 1El profesor es: Profesor: 1.0, CarlosRodríguez, email: carlos.rodriguez@email.com , Tiempo Completo, el año es: 2023, el semestre es: 2, el curso es: com.mycompany.lab1poo.modelos.Curso@2f4d3709
 el id del curso: 2El profesor es: Profesor: 2.0, AnaMartínez, email: ana.martinez@email.com , Medio Tiempo, el año es: 2023, el semestre es: 2, el curso es: com.mycompany.lab1poo.modelos.Curso@3d646c37
+el id del curso: 1El profesor es: Profesor: 1.0, CarlosRodríguez, email: carlos.rodriguez@email.com , Tiempo Completo, el año es: 2023, el semestre es: 2, el curso es: com.mycompany.lab1poo.modelos.Curso@2f4d3709
+el id del curso: 2El profesor es: Profesor: 2.0, AnaMartínez, email: ana.martinez@email.com , Medio Tiempo, el año es: 2023, el semestre es: 2, el curso es: com.mycompany.lab1poo.modelos.Curso@3d646c37
+el id del curso: 1El profesor es: Profesor: 1.0, CarlosRodríguez, email: carlos.rodriguez@email.com , Tiempo Completo, el año es: 2023, el semestre es: 2, el curso es: com.mycompany.lab1poo.modelos.Curso@2f4d3709
+el id del curso: 2El profesor es: Profesor: 2.0, AnaMartínez, email: ana.martinez@email.com , Medio Tiempo, el año es: 2023, el semestre es: 2, el curso es: com.mycompany.lab1poo.modelos.Curso@3d646c37
