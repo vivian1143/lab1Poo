@@ -9,9 +9,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import modelo.Curso;
-import modelo.Estudiante;
-import modelo.Inscripcion;
+import com.mycompany.lab1poo.modelos.Curso;
+import com.mycompany.lab1poo.modelos.Estudiante;
+import com.mycompany.lab1poo.modelos.Inscripcion;
 
 public class CursosInscritos {
 

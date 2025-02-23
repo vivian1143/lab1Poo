@@ -15,6 +15,38 @@ public class Estudiante extends Persona {
         this.promedio = promedio;
     }
 
+    public String getCodigoEstudiante() {
+        return codigo;
+    }
+
+    public void setCodigoEstudiante(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public Programa getProgramaEstudiante() {
+        return programa;
+    }
+
+    public void setProgramaEstudiante(Programa programa) {
+        this.programa = programa;
+    }
+
+    public boolean isActivoEstudiante() {
+        return activo;
+    }
+
+    public void setActivoEstudiante(boolean activo) {
+        this.activo = activo;
+    }
+
+    public double getPromedioEstudiante() {
+        return promedio;
+    }
+
+    public void setPromedioEstudiante(double promedio) {
+        this.promedio = promedio;
+    }
+
     @Override
     public String toString() {
         return "Estudiante: " + super.toString() + ", " + codigo + ", " + programa + ", " + activo + ", " + promedio;
